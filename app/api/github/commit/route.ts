@@ -148,6 +148,7 @@ export async function POST(request: Request) {
       { status: 404 },
     );
   }
+  // GitHub returns 403 or 429 when the API rate limit is exhausted.
   if (response.status === 403 || response.status === 429) {
     return Response.json(
       { error: 'GitHub request limit reached. Please try again later.' },
