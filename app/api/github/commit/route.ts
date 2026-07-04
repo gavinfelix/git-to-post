@@ -136,6 +136,7 @@ export async function POST(request: Request) {
     // Build the REST URL from validated segments instead of requesting the user-supplied URL.
     response = await fetch(
       `https://api.github.com/repos/${encodeURIComponent(commit.owner)}/${encodeURIComponent(commit.repository)}/commits/${encodeURIComponent(commit.sha)}`,
+      // Next.js caches fetch by default; each commit lookup should hit GitHub directly.
       { headers, cache: 'no-store' },
     );
   } catch {
