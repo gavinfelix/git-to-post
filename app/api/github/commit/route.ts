@@ -63,6 +63,7 @@ function buildDevelopmentLog(
   if (!message) throw new Error('GitHub returned a commit without a message.');
 
   const sha = asText(data.sha, fallbackSha);
+  // Prefer the GitHub login when present; fall back to the git commit author name.
   const author = asText(data.author?.login) || asText(data.commit?.author?.name, 'Unknown author');
   const date = asText(data.commit?.author?.date);
   const additions = asNumber(data.stats?.additions);
