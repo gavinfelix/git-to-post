@@ -110,6 +110,7 @@ export async function POST(request: Request) {
   }
 
   const url = (body as { url?: unknown })?.url;
+  // Bound input size before parsing to limit abuse of the URL parser and downstream logic.
   if (typeof url !== 'string' || url.length > 500) {
     return Response.json({ error: 'A valid GitHub commit URL is required.' }, { status: 400 });
   }
