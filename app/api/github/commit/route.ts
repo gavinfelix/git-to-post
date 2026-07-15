@@ -145,6 +145,7 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Could not connect to GitHub. Please try again.' }, { status: 502 });
   }
 
+  // Without a token, private repos also appear as 404 — treat them the same for now.
   if (response.status === 404) {
     return Response.json(
       { error: 'Commit not found. The first version only supports public repositories.' },
