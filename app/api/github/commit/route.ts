@@ -126,6 +126,7 @@ export async function POST(request: Request) {
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github+json',
     'X-GitHub-Api-Version': GITHUB_API_VERSION,
+    // GitHub rejects API calls that omit User-Agent.
     'User-Agent': 'GitToPost.ai',
   };
   // Optional: raises the anonymous 60 req/hr limit and enables access to private repos.
