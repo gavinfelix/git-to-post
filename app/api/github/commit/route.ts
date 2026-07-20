@@ -60,6 +60,7 @@ function buildDevelopmentLog(
   fallbackSha: string,
 ) {
   const message = asText(data.commit?.message).trim();
+  // A commit message is the core input for post generation — refuse empty payloads.
   if (!message) throw new Error('GitHub returned a commit without a message.');
 
   const sha = asText(data.sha, fallbackSha);
