@@ -169,6 +169,7 @@ export async function POST(request: Request) {
   try {
     return Response.json({
       log: buildDevelopmentLog(data, `${commit.owner}/${commit.repository}`, commit.sha),
+      // Prefer GitHub's canonical html_url over the raw user-supplied input.
       sourceUrl: asText(data.html_url, url.trim()),
     });
   } catch (error) {
