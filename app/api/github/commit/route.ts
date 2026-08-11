@@ -1,3 +1,4 @@
+// Pin the REST API version so GitHub response shapes do not change under us.
 const GITHUB_API_VERSION = '2022-11-28';
 const MAX_FILES = 30;
 const MAX_LOG_LENGTH = 12000;
@@ -77,6 +78,7 @@ function buildDevelopmentLog(
     message,
     '',
     `Repository: ${repositoryName}`,
+    // Short SHA matches how GitHub displays commits in the UI.
     `Commit: ${sha.slice(0, 7)}`,
     `Author: ${author}`,
   ];
